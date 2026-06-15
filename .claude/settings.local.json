@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(grep -E \"\\\\.md$|\\\\.json$\")",
-      "Bash(dotnet test *)"
+      "Bash(dotnet test *)",
+      "Bash(git remote *)",
+      "Bash(git push *)"
     ]
   }
 }

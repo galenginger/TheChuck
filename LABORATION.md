@@ -64,7 +64,7 @@ TheChuckTests/         – Enhetstester med MSTest
 
 Besvara följande frågor skriftligt (3–5 meningar vardera):
 
-1. **Lagerarkitektur** – Varför är koden uppdelad i `Core`, `Infrastructure` och `TheChuck`? Vad är ansvaret för varje lager? Vad händer om du blandar ihop dem (t.ex. lägger HTTP-anrop direkt i en Razor Page)?
+1. **Lagerarkitektur** – Varför är koden uppdelad i `Core`,, `Infrastructure` och `TheChuck`? Vad är ansvaret för varje lager? Vad händer om du blandar ihop dem (t.ex. lägger HTTP-anrop direkt i en Razor Page)?
 
 2. **Dependency Injection** – Titta på `Program.cs` och konstruktorn i `IndexModel`. Förklara vad Dependency Injection är och varför `IndexModel` tar emot ett `IJokeService`-interface istället för en konkret `JokeService`.
 
