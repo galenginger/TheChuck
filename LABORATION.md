@@ -218,25 +218,25 @@ Resonera kring frågan och fundera på hur testet skulle behöva se ut för att 
 Gå igenom listan innan du öppnar `FACIT.md`. Bocka av varje punkt du faktiskt genomfört.
 
 **Del 1 – Driftsättning**
-- [ ] Jag har skapat ett konto och en webbplats på MonsterASP.NET
-- [ ] Actions-pipelinen har körts och alla steg är gröna
-- [ ] Applikationen är tillgänglig och fungerar på min MonsterASP.NET-adress
-- [ ] Jag har besvarat de tre reflektionsfrågorna skriftligt
+- [x] Jag har skapat ett konto och en webbplats på MonsterASP.NET
+- [x] Actions-pipelinen har körts och alla steg är gröna - Körde MonsterASPS egna deploy profil däremot
+- [x] Applikationen är tillgänglig och fungerar på min MonsterASP.NET-adress
+- [x] Jag har besvarat de tre reflektionsfrågorna skriftligt
 
-**Del 2 – Kodstruktur**
-- [ ] Jag har förklarat lagerarkitekturen och vad varje projekt ansvarar för
-- [ ] Jag har förklarat vad Dependency Injection är och varför ett interface används
-- [ ] Jag har förklarat hur fake-objekt möjliggör testning utan riktiga API-anrop
-- [ ] Jag har förklarat varför `WebClient` är en separat klass
-- [ ] Jag har ritat ett sekvensdiagram som visar anropskedjan
+**Del 2 – Kodstruktur** -- Se Svarpåfrågor.md
+- [x] Jag har förklarat lagerarkitekturen och vad varje projekt ansvarar för
+- [x] Jag har förklarat vad Dependency Injection är och varför ett interface används
+- [x] Jag har förklarat hur fake-objekt möjliggör testning utan riktiga API-anrop
+- [x] Jag har förklarat varför `WebClient` är en separat klass
+- [x] Jag har ritat ett sekvensdiagram som visar anropskedjan
 
 **Del 3 – TDD**
-- [ ] Jag körde `dotnet test` och alla *befintliga* tester var gröna innan jag började
-- [ ] Jag skrev ett rött test *innan* jag implementerade varje uppgift
-- [ ] Uppgift 3.1: Minst tre nya tester är gröna, `Category`-querystring fungerar
-- [ ] Uppgift 3.2: Minst tre nya tester är gröna, `Who`-querystring fungerar
-- [ ] Uppgift 3.3: Minst tre nya tester är gröna, `WordCount` beräknas korrekt
-- [ ] `dotnet test` – alla tester (gamla och nya) är gröna
+- [x] Jag körde `dotnet test` och alla *befintliga* tester var gröna innan jag började
+- [x] Jag skrev ett rött test *innan* jag implementerade varje uppgift
+- [x] Uppgift 3.1: Minst tre nya tester är gröna, `Category`-querystring fungerar
+- [x] Uppgift 3.2: Minst tre nya tester är gröna, `Who`-querystring fungerar
+- [x] Uppgift 3.3: Minst tre nya tester är gröna, `WordCount` beräknas korrekt
+- [x] `dotnet test` – alla tester (gamla och nya) är gröna
 
 ---
 

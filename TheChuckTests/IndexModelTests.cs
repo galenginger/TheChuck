@@ -43,6 +43,9 @@ namespace TheChuck.Pages.Tests
         }
 
         // --- Uppgift 3.1: Kategorifilter ---
+        // Röd: Testerna nedan skrevs först och misslyckades eftersom OnGet() alltid anropade GetRandomJoke().
+        // Grön: OnGet() uppdaterades med villkorlig logik som anropar GetJokeFromCategory() när Category är satt.
+        // Refaktor: Ingen refaktorering behövdes - koden var redan tydlig och koncis.
 
         [TestMethod()]
         public async Task OnGet_WithCategory_ShouldDisplayJokeFromCategory()
@@ -79,6 +82,9 @@ namespace TheChuck.Pages.Tests
         }
 
         // --- Uppgift 3.2: Namnbyte (Who) ---
+        // Röd: Testerna nedan skrevs först och misslyckades eftersom Who-parametern ignorerades i OnGet().
+        // Grön: En Replace()-rad lades till i OnGet() innan ToUpper() för att byta ut "Chuck Norris".
+        // Refaktor: Ingen refaktorering behövdes.
 
         [TestMethod()]
         public async Task OnGet_WithWho_ShouldReplaceChuckNorrisWithWho()
@@ -116,6 +122,9 @@ namespace TheChuck.Pages.Tests
         }
 
         // --- Uppgift 3.3: Ordräkning (WordCount) ---
+        // Röd: Testerna nedan misslyckades eftersom WordCount-egenskapen inte existerade i IndexModel.
+        // Grön: WordCount lades till som property och beräknas i slutet av OnGet() efter alla transformationer.
+        // Refaktor: Ingen refaktorering behövdes.
 
         [TestMethod()]
         public async Task OnGet_ShouldCountWordsInDisplayText()
@@ -135,7 +144,6 @@ namespace TheChuck.Pages.Tests
 
             await sut.OnGet();
 
-            // Felmeddelandet är inte tomt, men vi testar med en joke utan text
             Assert.IsTrue(sut.WordCount >= 0);
         }
 
@@ -153,7 +161,7 @@ namespace TheChuck.Pages.Tests
         [TestMethod()]
         public async Task OnGet_WordCountShouldReflectDisplayTextAfterTransformations()
         {
-            // "Chuck Norris can divide by zero" → ersätt "Chuck Norris" med "Björn" → "Björn can divide by zero" = 5 ord
+            // "Chuck Norris can divide by zero" - ersätt "Chuck Norris" med "Björn" - "Björn can divide by zero" = 5 ord
             var joke = new Joke() { Value = "Chuck Norris can divide by zero" };
             var sut = new IndexModel(NullLogger<IndexModel>.Instance, new JokeServiceFake(joke));
             sut.Who = "Björn";
@@ -164,6 +172,19 @@ namespace TheChuck.Pages.Tests
         }
 
         // --- Extrauppgift: Testet bevisar att rätt metod anropas ---
+        //
+        // Problemet med facit-testet:
+        // JokeServiceFake(joke) skapades med EN joke som returnerades av BÅDE GetRandomJoke() och GetJokeFromCategory().
+        // Det innebar att testet skulle vara grönt även om OnGet() alltid anropade GetRandomJoke() - oavsett om
+        // Category var satt eller inte. Testet verifierade alltså bara att DisplayText sattes, inte att rätt metod anropades.
+        //
+        // Lösning: JokeServiceFake fick stöd för två distinkta jokes - en för GetRandomJoke() och en annan för
+        // GetJokeFromCategory(). På så sätt kan testet nedan verkligen bevisa att rätt metod anropades genom att
+        // kontrollera vilken av de två olika joke-texterna som hamnade i DisplayText.
+        //
+        // Röd: Testet nedan skrevs för att visa att det gamla facit-testet inte bevisade att GetJokeFromCategory anropades.
+        // Grön: JokeServiceFake uppdaterades med distinkta jokes per metod så att testet faktiskt kan skilja på metodanropen.
+        // Refaktor: JokeServiceFake fick en ny konstruktor som tar två jokes, med bakåtkompatibel enkonstruktor.
 
         [TestMethod()]
         public async Task OnGet_WithCategory_ShouldCallGetJokeFromCategory_NotGetRandom()
