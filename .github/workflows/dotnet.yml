@@ -24,17 +24,10 @@ jobs:
       - name: Test with .NET
         run: dotnet test
 
-      - name: Install Web Deploy
-        run: choco install webdeploy --yes --no-progress
-
       - name: Deploy to MonsterASP.NET via WebDeploy
-        env:
-          WEBSITE_NAME: ${{ secrets.WEBSITE_NAME }}
-          SERVER_COMPUTER_NAME: ${{ secrets.SERVER_COMPUTER_NAME }}
-          SERVER_USERNAME: ${{ secrets.SERVER_USERNAME }}
-          SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
-        run: |
-          $msdeploy = "$env:ProgramFiles\IIS\Microsoft Web Deploy V3\msdeploy.exe"
-          $computerName = "https://$env:SERVER_COMPUTER_NAME:8172/msdeploy.axd?site=$env:WEBSITE_NAME"
-          $dest = "contentPath=$env:WEBSITE_NAME,computerName=$computerName,userName=$env:SERVER_USERNAME,password=$env:SERVER_PASSWORD,authtype=Basic"
-          & $msdeploy -verb:sync "-source:contentPath=.\publish" "-dest:$dest" -allowUntrusted
+        uses: rasmusbuchholdt/simply-web-deploy@2.1.0
+        with:
+          website-name: ${{ secrets.WEBSITE_NAME }}
+          server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}
+          server-username: ${{ secrets.SERVER_USERNAME }}
+          server-password: ${{ secrets.SERVER_PASSWORD }}
