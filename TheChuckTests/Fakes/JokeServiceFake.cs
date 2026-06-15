@@ -1,26 +1,22 @@
-﻿using TheChuck.Core;
+using TheChuck.Core;
 
 namespace TheChuckTests.Fakes
 {
     internal class JokeServiceFake : IJokeService
     {
-        private readonly Joke joke;
+        private readonly Joke _randomJoke;
+        private readonly Joke _categoryJoke;
 
-        public JokeServiceFake(Joke joke)
+        public JokeServiceFake(Joke joke) : this(joke, joke) { }
+
+        public JokeServiceFake(Joke randomJoke, Joke categoryJoke)
         {
-            this.joke = joke;
+            _randomJoke = randomJoke;
+            _categoryJoke = categoryJoke;
         }
 
-        public Task<Joke?> GetJokeFromCategory(string category)
-        {
-            throw new NotImplementedException();
-        }
+        public Task<Joke?> GetRandomJoke() => Task.FromResult<Joke?>(_randomJoke);
 
-        public async Task<Joke?> GetRandomJoke()
-        {
-            return await Task.FromResult(joke);
-        }
+        public Task<Joke?> GetJokeFromCategory(string category) => Task.FromResult<Joke?>(_categoryJoke);
     }
 }
-
-

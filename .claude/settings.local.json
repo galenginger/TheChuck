@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.md$|\\\\.json$\")",
+      "Bash(dotnet test *)"
+    ]
+  }
+}

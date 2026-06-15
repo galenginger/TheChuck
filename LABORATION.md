@@ -14,7 +14,7 @@ Projektet innehåller redan en CI/CD-pipeline i `.github/workflows/dotnet.yml` s
 
 ### Uppgift 1.1 – Skapa ett MonsterASP.NET-konto
 
-1. Gå till [MonsterASP.NET](https://www.monsterasp.net/) och registrera ett gratis konto.
+1. Gå till [MonsterASP.NET](https://www.monsteraspl.net/) och registrera ett gratis konto.
 2. Skapa en ny webbplats i kontrollpanelen. Notera:
    - **Website name** (namnet på din webbplats)
    - **Server computer name** (WebDeploy-server, t.ex. `waws-prod-xxx.publish.azurewebsites.windows.net`)
